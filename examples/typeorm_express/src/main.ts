@@ -51,7 +51,7 @@ async function bootstrap() {
 
       // Once the user has logged in set the user on the AuthorizationRequest
       console.log("Once the user has logged in set the user on the AuthorizationRequest");
-      const user = { id: "abc", email: "user@example.com" };
+      const user = { id: "d6d6708c-bf8f-11eb-8529-0242ac130003", email: "user@example.com" };
       authRequest.user = user;
 
       // At this point you should redirect the user to an authorization page.

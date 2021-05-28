@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "an example typescript-oauth2-server using typeorm",
   "scripts": {
-    "dev": "ts-node-dev src/main.ts"
+    "dev": "ts-node-dev src/main.ts",
+    "dev:debug": "ts-node-dev --inspect=9229 src/main.ts"
   },
   "author": "Jason Raimondi",
   "dependencies": {

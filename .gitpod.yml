@@ -3,9 +3,9 @@ image:
 
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: echo 'init script' # runs during prebuild
-    command: echo 'start script'
-  
+  - init: npm install && cd examples/typeorm_express && npm install
+    command: TYPEORM_MIGRATIONS=migrations/*.ts TYPEORM_MIGRATIONS_DIR=migrations TYPEORM_MIGRATIONS_RUN=true TYPEORM_LOGGING=debug TYPEORM_SYNCHRONIZE=true TYPEORM_ENTITIES=src/entities/**/*.ts TYPEORM_ENTITIES_DIR=entitiies TYPEORM_URL=postgres://gitpod:gitpod@localhost/postgres OAUTH_CODES_SECRET=not_a_secret npm run dev:debug
+
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
   - port: 3000
