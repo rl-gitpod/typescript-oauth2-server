@@ -4,7 +4,9 @@ image:
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - init: npm install && cd examples/typeorm_express && npm install
+    # NOTE: do not assume that the init has run every time - it will not run on workspace restart for e.g.
     command:  >
+      cd ${GITPOD_REPO_ROOT}/examples/typeorm_express &&
       TYPEORM_MIGRATIONS=migrations/*.ts TYPEORM_MIGRATIONS_DIR=migrations TYPEORM_MIGRATIONS_RUN=true 
       TYPEORM_LOGGING=debug TYPEORM_SYNCHRONIZE=true TYPEORM_ENTITIES=src/entities/**/*.ts 
       TYPEORM_ENTITIES_DIR=entitiies TYPEORM_URL=postgres://gitpod:gitpod@localhost/postgres 
@@ -12,7 +14,7 @@ tasks:
   - init: sleep 35
     command: >
       echo -e "\nPKCE Code Grant authorization..." &&
-      x=`curl -s -S "http://localhost:3000/authorize?response_type=code&client_id=ed883c20-bf58-11eb-8529-0242ac130003&code_challenge=CUZX5qE8Wvye6kS_SasIsa8MMxacJftmWdsIA_iKp3I&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A76543&state=s" | sed 's/.*code=\(.*\)\&.*/\1/'` && 
+      x=`curl -s -S "http://localhost:3000/authorize?response_type=code&clienat_id=ed883c20-bf58-11eb-8529-0242ac130003&code_challenge=CUZX5qE8Wvye6kS_SasIsa8MMxacJftmWdsIA_iKp3I&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A76543&state=s" | sed 's/.*code=\(.*\)\&.*/\1/'` && 
       echo -e "Fetching OAuth token...\n" &&
       curl -d "grant_type=authorization_code&client_id=ed883c20-bf58-11eb-8529-0242ac130003&redirect_uri=http%3A%2F%2Flocalhost%3A76543&code_verifier=u1ta-MQ0e7TcpHjgz33M2DcBnOQu~aMGxuiZt0QMD1C&code=$x&client_secret=not-a-secret" http://localhost:3000/token | jq
 
