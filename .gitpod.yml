@@ -5,7 +5,6 @@ image:
 tasks:
   - init: npm install && cd examples/typeorm_express && npm install
     command:  >
-      cd examples/typeorm_express && 
       TYPEORM_MIGRATIONS=migrations/*.ts TYPEORM_MIGRATIONS_DIR=migrations TYPEORM_MIGRATIONS_RUN=true 
       TYPEORM_LOGGING=debug TYPEORM_SYNCHRONIZE=true TYPEORM_ENTITIES=src/entities/**/*.ts 
       TYPEORM_ENTITIES_DIR=entitiies TYPEORM_URL=postgres://gitpod:gitpod@localhost/postgres 
